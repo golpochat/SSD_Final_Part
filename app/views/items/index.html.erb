@@ -1,0 +1,33 @@
+<div class="flex-row">
+  <p id="notice"><%= notice %></p>
+
+  <h3 class="mb-5 mt-5">List of Items</h3>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th><%= link_to 'Add Item', new_item_path,class: "btn btn-success btn-md"%></th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td></td>
+        <td><%= item.name %></td>
+        <td><%= item.description %></td>
+        <td><%= number_to_currency(number_with_precision(item.price, :precision => 2), :unit => "€") %></td>
+        <td>
+          <%= link_to 'Add to Cart', cart_add_path(item.id), :class => "btn btn-md btn-success" %>
+          <%= link_to 'Show', item ,class: "btn btn-primary btn-md"%>
+          <%= link_to 'Edit', edit_item_path(item),class: "btn btn-warning btn-md" %>
+          <%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger btn-md"%></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

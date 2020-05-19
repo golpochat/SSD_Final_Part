@@ -1,0 +1,11 @@
+<div class="flex-row">
+  <h3 class="mb-5 mt-5">Editing Invoice</h3>
+
+  <%= render 'form', invoice: @invoice %>
+
+  <p class="pt-5">
+    <%= link_to 'Show', @invoice, class: "btn btn-primary btn-md" %>
+    <%= link_to 'Back', invoices_path, class: "btn btn-success btn-md" %>
+  </p>
+
+</div>

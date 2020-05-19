@@ -1,0 +1,22 @@
+<div class="flex-row">
+  <p id="alert"><%= alert %></p>
+  <h1 class="mb-5">Login</h1>
+  <%#= form_for login_url do |f| %>
+  <%= form_with(url: sessions_url, local: true) do |f| %>
+    <%= f.label :email %>
+    <%= f.text_field :email, class: 'form-control' %>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+    <%= f.label :remember_me, class: "checkbox inline" do %>
+      <%= f.check_box :remember_me %>
+      <span>Remember me on this computer</span>
+    <% end %>
+    <p >
+      <%= f.submit "Login", class: "btn btn-primary" %>
+    </p>
+    <p class="mb-5">
+      New user? <%= link_to "Sign up now!", signup_path %>
+    </p>
+  <% end %>
+</div>
+

@@ -1,0 +1,27 @@
+<div class="flex-row">
+  <p id="notice"><%= notice %></p>
+  <h3 class="mb-5 mt-5">Invoice Item Info</h3>
+
+  <h5>
+    <strong>Invoice:</strong>
+    <%= @invoice_item.invoice %>
+  </h5>
+  <h5>
+    <strong>Item:</strong>
+    <%= @invoice_item.item %>
+  </h5>
+  <h5>
+    <strong>Quantity:</strong>
+    <%= @invoice_item.quantity %>
+  </h5>
+
+  <h5>
+    <strong>Amount:</strong>
+    <%= number_to_currency(number_with_precision(@invoice_item.amount, :precision => 2), :unit => "€") %>
+  </h5>
+
+  <p class="pt-5">
+    <%= link_to 'Edit', edit_invoice_item_path(@invoice_item) , class: "btn btn-primary btn-md" %>
+    <%= link_to 'Back', invoice_items_path, class: "btn btn-success btn-md" %>
+  </p>
+</div>

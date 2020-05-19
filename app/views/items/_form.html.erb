@@ -1,0 +1,28 @@
+<div class="flex-row">
+  <%= form_with(model: @item, local: true) do |form| %>
+    <% if @item.errors.any? %>
+      <div id="error_explanation">
+        <h4><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h4>
+
+        <ul>
+          <% @item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+
+    <%= form.label :description %>
+    <%= form.text_field :description, class: "form-control" %>
+
+    <%= form.label :price %>
+    <%= form.text_field :price, class: "form-control" %>
+
+    <p class="pt-3">
+      <%= form.submit "Submit", class: "btn btn-primary btn-md" %>
+    </p>
+  <% end %>
+</div>

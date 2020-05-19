@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  date_of_invoice: 2020-05-17
+  invoice_status: false
+  total_amount: 1.5
+
+two:
+  name: MyString
+  address: MyString
+  date_of_invoice: 2020-05-17
+  invoice_status: false
+  total_amount: 1.5

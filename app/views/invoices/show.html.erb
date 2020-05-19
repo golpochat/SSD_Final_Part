@@ -1,0 +1,54 @@
+<did class="flex-row">
+  <div class="table-responsive">
+    <h1 class="text-center">Your order details.</h1>
+    <table class="table">
+      <thead>
+      <tr class="success">
+        <th colspan="2">
+          <h5>Name: <%= @user.name %></h5>
+          <h5>Address: <%= @user.address %></h5>
+          <h5>Email: <%= @user.email %></h5>
+        </th>
+        <th colspan="2">
+          <h5>Invoice no: <%= @invoice.id %></h5>
+          <h5>Invoice Date: <%= @invoice.date_of_invoice %></h5>
+          <h5>Invoice Status: <%= @invoice.status %></h5>
+        </th>
+      </tr>
+      <tr class="success">
+        <th>Name of the item</th>
+        <th>Qty.</th>
+        <th>Price</th>
+        <th class="text-right">Sub-total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @countItem = 0 %>
+      <% @total = 0 %>
+      <% @invoice_items.each do |item| %>
+        <tr>
+          <%# item = InvoiceItem.find_by_id(id) %>
+          <% item_name = Item.find_by_id(item.item_id) %>
+          <td><%= item_name.name %></td>
+          <td><%= item.quantity %></td>
+          <td><%= number_to_currency(number_with_precision(item_name.price, :precision => 2), :unit => "€")%></td>
+          <td class="text-right"><%= number_to_currency(number_with_precision(item.quantity * item_name.price, :precision => 2), :unit => "€") %></td>
+          <% timx = (item.quantity * item_name.price)%>
+          <% @countItem += item.quantity %>
+          <% @total += timx %>
+        </tr>
+      <% end %>
+      </tbody>
+      <tfoot>
+      <tr class="success">
+        <th colspan="1" style="text-align:right"> <h3>Total Qty.: <%= @countItem %></h3> </th>
+        <th colspan="3" style="text-align:right"> <h3>Total: <%= number_to_currency(number_with_precision(@total, :precision => 2), :unit => "€") %></h3> </th>
+      </tr>
+      </tfoot>
+    </table>
+
+    <div class="text-center" style="margin:25px auto;">
+      <%= link_to "Back", invoices_path, class: 'btn btn-lg btn-success',style: 'color: white;' %>
+    </div>
+  </div>
+</did>

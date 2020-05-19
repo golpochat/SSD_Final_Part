@@ -1,0 +1,22 @@
+<div class="flex-row">
+  <p id="notice"><%= notice %></p>
+  <h3 class="mb-5 mt-5">Module Info</h3>
+  <h3>
+    <strong>Name:</strong>
+    <%= @item.name %>
+  </h3>
+
+  <h3>
+    <strong>Description:</strong>
+    <%= @item.description %>
+  </h3>
+
+  <h3>
+    <strong>Price:</strong>
+    <%= @item.price %>
+  </h3>
+  <p class="pt-5">
+    <%= link_to 'Edit', edit_item_path(@item), class: "btn btn-primary btn-md" %>
+    <%= link_to 'Back', items_path, class: "btn btn-success btn-md" %>
+  </p>
+</div>

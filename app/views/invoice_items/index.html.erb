@@ -1,0 +1,30 @@
+<div class="flex-row">
+  <p id="notice"><%= notice %></p>
+
+  <h3 class="mb-5 mt-5">List of Invoice Items</h3>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Quantity</th>
+      <th>Amount</th>
+      <th class="text-center">Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @invoice_items.each do |invoice_item| %>
+      <tr>
+        <td><%= invoice_item.invoice_id %></td>
+        <td><%= invoice_item.quantity %></td>
+        <td><%= number_to_currency(number_with_precision(invoice_item.amount, :precision => 2), :unit => "€") %></td>
+        <td class="text-center">
+          <%= link_to 'Show', invoice_item ,class: "btn btn-primary btn-md"%>
+          <%= link_to 'Edit', edit_invoice_item_path(invoice_item),class: "btn btn-warning btn-md" %>
+          <%= link_to 'Delete', invoice_item, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger btn-md"%></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

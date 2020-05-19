@@ -1,0 +1,34 @@
+<div class="flex-row">
+  <%= form_with(model: @invoice_item, local: true) do |form| %>
+    <% if @invoice_item.errors.any? %>
+      <div id="error_explanation">
+        <h4><%= pluralize(@invoice_item.errors.count, "error") %> prohibited this invoice_item from being saved:</h4>
+
+        <ul>
+        <% @invoice_item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+      <%= form.label :invoice_id %>
+      <%= form.text_field :invoice_id , class: "form-control"%>
+
+      <%= form.label :item_id %>
+      <%= form.text_field :item_id , class: "form-control"%>
+
+      <%= form.label :quantity %>
+      <%= form.number_field :quantity , class: "form-control"%>
+
+      <%= form.label :amount %>
+      <%= form.text_field :amount , class: "form-control"%>
+
+    <p class="pt-3">
+      <%= form.submit "Submit", class: "btn btn-primary btn-md" %>
+    </p>
+
+  <% end %>
+</div>
+
+
